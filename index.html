@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludo Star</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+      *{margin:0;padding: 0;}
+      body{
+          background-image: url('ludo3.jpg');
+      background-size: 100vw 100vh;
+      font-family: 'Indie Flower', cursive;
+      color: white;
+      }
+      .container
+      {
+          /* border:5px solid black; */
+          max-width:700px;
+          margin:0 auto;
+          height: 65vh;
+          color: white;
+      }
+      .container h1
+      {
+          text-align: center;
+          font-weight: bold;
+      }
+      footer h2{
+          font-size: 2rem;
+      }
+      .player1,.player2
+      {
+          display: inline-block;
+          width: 300px;
+          height: 280px;
+          /* border:2px solid black; */
+          margin-left: 30px;
+          position: relative;
+          top:5vh;
+          text-align: center;
+          padding:1rem;
+          box-sizing: border-box;
+      }
+      
+      footer
+      {
+          text-align: center;
+          position: relative;
+          top:18vh;
+          background: linear-gradient(to top,navy,transparent);
+          width: 100%;
+          margin:0 0;
+      }
+      .player1 img,.player2 img
+      {
+          position: absolute;
+          width: 75%;
+          height: 190px;
+          top:10vh;
+          left:12.5%;
+      }
+      .cup
+      {
+         
+          position: relative;
+          top:2vh;
+          /* border:1px solid black; */
+      }
+      .cup img
+      {
+          width: 250px;
+          height: 190px;
+      }
+      .winner
+      {
+          font-size: 3rem;
+          background:linear-gradient(to bottom,maroon,transparent);
+          width: 100%;
+          text-align: center;
+          /* box-shadow:5px 5px 5px 5px rgba(0,0,0,0.7); */
+      }
+      
+    </style>
+</head>
+<body>
+    <h1 class="winner">
+        🎊
+       </h1>
+   <div class="container">
+   
+   <h1 class="cup"><img src="giphy.gif"/></h1>
+   <div class="player1">
+<h2>PLayeR 1</h2>
+
+   </div>
+   <div class="player2">
+<h2>PLayeR 2</h2>
+   </div>
+
+   </div>
+
+   <footer>
+    <h2>Ludo Star 🎲</h2>
+    </footer>
+   <audio src="win.mp3"></audio>
+    <script>
+    var winnerAudio=document.getElementsByTagName('audio')[0];
+    var diceArr = ['<img src="imgs/dice1.png"/>','<img src="imgs/dice2.png"/>','<img src="imgs/dice3.png"/>','<img src="imgs/dice4.png"/>','<img src="imgs/dice5.png"/>','<img src="imgs/dice6.png"/>'];
+    var player1Rand = Math.floor(Math.random() *6); // returns random integars from 0 to 5
+    var player2Rand = Math.floor(Math.random() *6);
+    // console.log(player1Rand);
+    // console.log(player2Rand);
+    // console.log(diceArr.length);
+    // console.log( document.getElementsByClassName('player1')[0], document.getElementsByClassName('player2')[0]);
+            document.getElementsByClassName('player1')[0].innerHTML += `${diceArr[player1Rand]}`;
+            document.getElementsByClassName('player2')[0].innerHTML += `${diceArr[player2Rand]}`;
+            
+
+            if(player1Rand>player2Rand)
+            {
+                document.getElementsByClassName('winner')[0].innerHTML += "Payer 1 Wins!";
+              
+            }
+            else if(player2Rand>player1Rand)
+            {
+                document.getElementsByClassName('winner')[0].innerHTML += "Player 2 Wins!";  
+            }
+            else
+            {
+                document.getElementsByClassName('winner')[0].innerHTML = "Draw!";   
+            }
+            winnerAudio.play();
+            
+     
+    </script>
+
+</body>
+</html>
